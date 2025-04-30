@@ -1,0 +1,44 @@
+@startuml To-Do List
+
+' Class definitions
+class User {
+  -id: int
+  -username: string
+  -email: string
+  -password: string
+  -created_at: datetime
+  +login()
+  +register()
+  +logout()
+}
+
+class List {
+  -id: int
+  -user_id: int
+  -titre: string
+  -description: string
+  -created_at: datetime
+  +create()
+  +update()
+  +delete()
+  +getTasks()
+}
+
+class Task {
+  -id: int
+  -list_id: int
+  -titre: string
+  -status: string
+  -is_done: boolean
+  -created_at: datetime
+  +create()
+  +update()
+  +delete()
+  +toggleStatus()
+}
+
+' Relationships
+User "1" -- "*" List : has >
+List "1" -- "*" Task : contains >
+
+@enduml
